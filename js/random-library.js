@@ -11,7 +11,7 @@ function randomInt(low, high) {
 }
 
 function randomRGB() {
-    let r = randomInt(0, 255);
+    let r = randomInt(0, 256);
     let g = randomInt(0, 256);
     let b = randomInt(0, 256);
     return "rgb(" + r + ", " + g + ", " + b + ")";

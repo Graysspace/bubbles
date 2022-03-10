@@ -1,3 +1,8 @@
+//Graphics Library
+//Requires global cnv and ctx variables
+
+//FUNCTION LIST
+//background(color)
 // stroke(color)
 // fill(color)
 // line(x1, y1, x2, y2)
@@ -8,6 +13,13 @@
 // ellipse(x, y, xRadius, yRadius, rotation, mode)
 // image(img, x, y, w, h)
 // imageClip(img, xc, yc, wc, hc, x, y, w, h)
+
+
+//Fill the canvac with the provided color
+function background(color) {
+  fill(color);
+  rect(0, 0, cnv.width, cnv.height, "fill");
+}
 
 function stroke(color) {
   ctx.strokeStyle = color;

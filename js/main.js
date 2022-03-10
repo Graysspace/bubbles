@@ -1,54 +1,49 @@
 // Bubble Objects by Michael Hong (Associative Arrays - property:value pairs)
 
+
+// Intialize canvas and  graphics context
 let cnv = document.getElementById("my-canvas");
 let ctx = cnv.getContext("2d");
 cnv.width = 800;
 cnv.height = 600;
  
+// Create an array of  random bubble objects
 let bubbles = [];
-for (let n = 1; n <= 15; n++) {
-    bubbles.push(newRandomBubble());
-}
 
+// Main Draw Loop
 requestAnimationFrame(draw);
 function draw() {
-    // Clear Canvas
-    ctx.clearRect(0, 0, cnv.width, cnv.height);
-
+    // Fill Canvas
+   background("black");
+  
     // Move and Draw All Bubbles
     for (let i = 0; i < bubbles.length; i++) {
         moveBubble(bubbles[i]);
         drawBubble(bubbles[i]);
     }
+    // Loop draw function
 
     requestAnimationFrame(draw);
 }
 
-function newBubble(initX, initY, initR, initColor) {
-    return {
-        x: initX,
-        y: initY,
-        r: initR,
-        color: initColor
-        };
+// Event Stuff
+document.addEventListener("keydown", keydownHandler);
+
+function keydownHandler(event) {
+    if (event.keyCode === 39) { 
+        // Right Arrow
+        // Add a new random bubble
+        addBubble();
+    } else if (event.keyCode === 37) {
+        // Left Arrow - Remove the Last Bubble
+        bubbles.pop();
+    }
 }
 
-function newRandomBubble() {
-    return {
-        x: randomInt(0, cnv.width),
-        y: randomInt(0, cnv.height),
-        r: randomInt(5, 35),
-        color: randomRGB()        
-    };
+// TIMERS
+setInterval(addBubble, 1000);
 
-}
-
-function drawBubble(aBubble) {
-    stroke(aBubble.color);
-    circle(aBubble.x, aBubble.y, aBubble.r, "stroke");
-}
-
-function moveBubble(aBubble) {
-    aBubble.x += randomInt(-2, 3);
-    aBubble.y += randomInt(-2, 3);
+function addBubble() {
+    console.log("hi");
+    bubbles.push(newBubble(400, 300, 30, randomRGB()));
 }
